@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-// Category class inherits from the Model class
+// Product class inherits from the Model class
 class Product extends Model {}
 
 // Product class (Model)
@@ -16,7 +16,7 @@ Product.init(
       autoIncrement: true,
     },
     // Product name
-    product_name: {
+    productName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -38,7 +38,7 @@ Product.init(
       },
     },
     // Product category
-    category_id: {
+    categoryId: {
       type: DataTypes.INTEGER,
       references: {
         model: "category",
