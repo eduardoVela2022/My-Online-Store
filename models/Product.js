@@ -37,7 +37,7 @@ Product.init(
         isNumeric: true,
       },
     },
-    // Product category
+    // Stores the category the product is in.
     categoryId: {
       type: DataTypes.INTEGER,
       references: {
