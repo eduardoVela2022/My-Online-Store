@@ -44,16 +44,60 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
-  // create a new category
+// Saves a new category into the database with the given information
+router.post("/", async (req, res) => {
+  try {
+    // Creates a new category and saves it into the database
+    await Category.create({
+      // Category name
+      categoryName: req.body.categoryName,
+    });
+
+    // If it succeeds, it returns a message to let the user know
+    res
+      .status(200)
+      .json("Category created and saved into the database successfully.");
+  } catch (error) {
+    // If it doesn't, it returns an error
+    res.status(500).json(error);
+  }
 });
 
-router.put("/:id", (req, res) => {
-  // update a category by its `id` value
+// Updates a category, which id matches the given id
+router.put("/:id", async (req, res) => {
+  try {
+    // Updates the category, from the database, which id matches the given id
+    await Category.update(
+      {
+        categoryName: req.body.categoryName,
+      },
+      { where: { id: req.params.id } }
+    );
+
+    // If it succeeds, it returns a message to let the user know
+    res.status(200).json("Category updated successfully.");
+  } catch (error) {
+    // If it doesn't, it returns an error
+    res.status(500).json(error);
+  }
 });
 
-router.delete("/:id", (req, res) => {
-  // delete a category by its `id` value
+// Deletes a category, which id matches the given id
+router.delete("/:id", async (req, res) => {
+  try {
+    // Deletes the category, from the database, which id matches the given id
+    await Category.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    // If it succeeds, it returns a message to let the user know
+    res.status(200).json("Category deleted from the database successfully.");
+  } catch (error) {
+    // If it doesn't, it returns an error
+    res.status(500).json(error);
+  }
 });
 
 // Exports
