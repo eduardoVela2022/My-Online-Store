@@ -44,16 +44,60 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
-  // create a new tag
+// Saves a new tag into the database with the given information
+router.post("/", async (req, res) => {
+  try {
+    // Creates a new tag and saves it into the database
+    await Tag.create({
+      // Tag name
+      tagName: req.body.tagName,
+    });
+
+    // If it succeeds, it returns a message to let the user know
+    res
+      .status(200)
+      .json("Tag created and saved into the database successfully.");
+  } catch (error) {
+    // If it doesn't, it returns an error
+    res.status(500).json(error);
+  }
 });
 
-router.put("/:id", (req, res) => {
-  // update a tag's name by its `id` value
+// Updates a tag, which id matches the given id
+router.put("/:id", async (req, res) => {
+  try {
+    // Updates the tag, from the database, which id matches the given id
+    await Tag.update(
+      {
+        tagName: req.body.tagName,
+      },
+      { where: { id: req.params.id } }
+    );
+
+    // If it succeeds, it returns a message to let the user know
+    res.status(200).json("Tag updated successfully.");
+  } catch (error) {
+    // If it doesn't, it returns an error
+    res.status(500).json(error);
+  }
 });
 
-router.delete("/:id", (req, res) => {
-  // delete on tag by its `id` value
+// Deletes a tag, which id matches the given id
+router.delete("/:id", async (req, res) => {
+  try {
+    // Deletes the tag, from the database, which id matches the given id
+    await Tag.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    // If it succeeds, it returns a message to let the user know
+    res.status(200).json("Tag deleted from the database successfully.");
+  } catch (error) {
+    // If it doesn't, it returns an error
+    res.status(500).json(error);
+  }
 });
 
 // Exports
