@@ -6,11 +6,11 @@ const ProductTag = require("./ProductTag");
 
 // One category has many products
 Category.hasMany(Product, {
-  foreignKey: "category_id",
+  foreignKey: "categoryId",
 });
 
 Product.belongsTo(Category, {
-  foreignKey: "category_id",
+  foreignKey: "categoryId",
 });
 
 // One product has many tags, and one tag has many products.
