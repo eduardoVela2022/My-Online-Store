@@ -1,5 +1,7 @@
+// Imports
 const { Product } = require("../models");
 
+// Product model seeds
 const productData = [
   {
     productName: "Plain T-Shirt",
@@ -33,8 +35,10 @@ const productData = [
   },
 ];
 
+// Adds the product model seeds to the database
 async function seedProducts() {
   await Product.bulkCreate(productData);
 }
 
+// Exports
 module.exports = seedProducts;

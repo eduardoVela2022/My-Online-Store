@@ -1,5 +1,7 @@
+// Imports
 const { Category } = require("../models");
 
+// Category model seeds
 const categoryData = [
   {
     categoryName: "Shirts",
@@ -18,8 +20,10 @@ const categoryData = [
   },
 ];
 
+// Adds the category model seeds to the database
 async function seedCategories() {
   await Category.bulkCreate(categoryData);
 }
 
+// Exports
 module.exports = seedCategories;
