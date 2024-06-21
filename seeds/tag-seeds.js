@@ -1,5 +1,7 @@
+// Imports
 const { Tag } = require("../models");
 
+// Tag model seeds
 const tagData = [
   {
     tagName: "rock music",
@@ -27,8 +29,10 @@ const tagData = [
   },
 ];
 
+// Adds the tag model seeds to the database
 async function seedTags() {
   await Tag.bulkCreate(tagData);
 }
 
+// Exports
 module.exports = seedTags;

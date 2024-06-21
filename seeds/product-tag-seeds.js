@@ -1,5 +1,7 @@
+// Imports
 const { ProductTag } = require("../models");
 
+// Product tag model seeds
 const productTagData = [
   {
     productId: 1,
@@ -51,8 +53,10 @@ const productTagData = [
   },
 ];
 
+// Adds the product tag model seeds to the database
 async function seedProductTags() {
   await ProductTag.bulkCreate(productTagData);
 }
 
+// Exports
 module.exports = seedProductTags;
