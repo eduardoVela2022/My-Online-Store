@@ -35,7 +35,7 @@ My Online Store is a server that hosts an online store’s products, product cat
 
 ## Usage
 
-To learn how to use My Online Store, click on the following link to see its walkthrough video:
+To learn how to use My Online Store, click on the following link to see its walkthrough video: https://drive.google.com/file/d/1KENGa8c_pZxKdLijEcYYLTQMojaeZ_G6/view?usp=sharing
 
 ## Credits
 
